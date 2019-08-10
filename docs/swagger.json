@@ -1,0 +1,740 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "{{.Description}}",
+        "title": "{{.Title}}",
+        "contact": {},
+        "license": {},
+        "version": "{{.Version}}"
+    },
+    "host": "{{.Host}}",
+    "basePath": "{{.BasePath}}",
+    "paths": {
+        "/backend/admin": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "[後台]取管理者清單",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.adminIndex"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/admin/delete_admin/{id}": {
+            "delete": {
+                "description": "只能由 [超級使用者] 操作",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "[後台]刪除管理者帳號",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用戶ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/admin/edit_admin/{id}": {
+            "put": {
+                "description": "只能由 [超級使用者] 操作",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "[後台]更改管理者資訊",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用戶ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "編輯帳號權限",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.editAdminBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/admin/register": {
+            "post": {
+                "description": "註冊只能由Super Admin進行註冊",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "[後台]註冊新管理者",
+                "parameters": [
+                    {
+                        "description": "註冊新管理者",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.adminRegisterBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/admin/reset_password/{id}": {
+            "put": {
+                "description": "只能由Admin重設密碼 , 重設密碼會回傳隨機字串亂數",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "[後台]重設密碼",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "用戶ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.updatePwdRepoBody"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/login": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Other"
+                ],
+                "summary": "[後台]登入後台",
+                "parameters": [
+                    {
+                        "description": "登入功能",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.adminLoginBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/logout": {
+            "put": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Other"
+                ],
+                "summary": "[後台]登出",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/menu": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Other"
+                ],
+                "summary": "[後台]類別選單",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.adminCategoryMenu"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/update_password": {
+            "put": {
+                "description": "只能更新自己的密碼",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Other"
+                ],
+                "summary": "[後台]更新密碼",
+                "parameters": [
+                    {
+                        "description": "修改自己的密碼",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.updatePwdRepoBody"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/backend/user_info": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Other"
+                ],
+                "summary": "取用戶資訊(登入後)",
+                "responses": {
+                    "200": {
+                        "description": "用戶資料",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.adminLogin"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/test/clear_session": {
+            "delete": {
+                "description": "背景功能",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Test"
+                ],
+                "summary": "清除過期session",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/test/get_redis": {
+            "get": {
+                "description": "Redis Pool 連線測試",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "測試 Redis 取值",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/test/ping_db_once": {
+            "get": {
+                "description": "DB Pool 連線測試",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Ping DB 測試",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/test/ping_db_second": {
+            "get": {
+                "description": "DB Pool 連線測試",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "Ping DB 測試",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        },
+        "/test/set_redis": {
+            "post": {
+                "description": "Redis Pool 連線測試",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Admin"
+                ],
+                "summary": "測試 Redis 存值",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    },
+                    "400": {
+                        "description": "異常錯誤",
+                        "schema": {
+                            "type": "object",
+                            "$ref": "#/definitions/structs.APIResult"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "structs.APIResult": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "type": "integer"
+                },
+                "error_msg": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "object"
+                }
+            }
+        },
+        "structs.adminCategoryMenu": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "description": "錯誤代碼(成功為0)",
+                    "type": "integer",
+                    "example": 2000
+                },
+                "error_msg": {
+                    "description": "錯誤訊息(預設空字串)",
+                    "type": "string",
+                    "example": "DB CONNECT ERRORR(2000)"
+                },
+                "result": {
+                    "description": "回傳資料",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/structs.menuList"
+                    }
+                }
+            }
+        },
+        "structs.adminIndex": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "description": "錯誤代碼(成功為0)",
+                    "type": "integer",
+                    "example": 2000
+                },
+                "error_msg": {
+                    "description": "錯誤訊息(預設空字串)",
+                    "type": "string",
+                    "example": "DB CONNECT ERRORR(2000)"
+                },
+                "result": {
+                    "description": "回傳資料",
+                    "type": "object",
+                    "$ref": "#/definitions/structs.adminList"
+                }
+            }
+        },
+        "structs.adminList": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "description": "帳號",
+                    "type": "string",
+                    "example": "user01"
+                },
+                "created_at": {
+                    "description": "帳號建立時間",
+                    "type": "string",
+                    "example": "2019-02-25 00:00:00"
+                },
+                "edited_by": {
+                    "description": "最後更改帳號人員",
+                    "type": "string",
+                    "example": "admin"
+                },
+                "group_id": {
+                    "description": "帳號權限 0:一般,1:超級使用者",
+                    "type": "integer",
+                    "example": 1
+                },
+                "id": {
+                    "description": "流水號",
+                    "type": "integer",
+                    "example": 2
+                },
+                "login_at": {
+                    "description": "最後登入時間",
+                    "type": "string",
+                    "example": "2019-02-25 00:00:00"
+                },
+                "status": {
+                    "description": "帳號狀態 flase:停用,true:啟用",
+                    "type": "boolean",
+                    "example": true
+                },
+                "updated_at": {
+                    "description": "帳號最後更新時間",
+                    "type": "string",
+                    "example": "2019-02-25 00:00:00"
+                }
+            }
+        },
+        "structs.adminLogin": {
+            "type": "object",
+            "properties": {
+                "error_code": {
+                    "description": "錯誤代碼(成功為0)",
+                    "type": "integer",
+                    "example": 2000
+                },
+                "error_msg": {
+                    "description": "錯誤訊息(預設空字串)",
+                    "type": "string",
+                    "example": "DB CONNECT ERRORR(2000)"
+                },
+                "result": {
+                    "description": "回傳資料",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/structs.loginInfo"
+                    }
+                }
+            }
+        },
+        "structs.adminLoginBody": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "type": "string",
+                    "example": "admin"
+                },
+                "pwd": {
+                    "type": "string",
+                    "example": "1234"
+                }
+            }
+        },
+        "structs.adminRegisterBody": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "description": "帳號",
+                    "type": "string",
+                    "example": "user02"
+                },
+                "group_id": {
+                    "description": "帳號權限 0:一般,1:超級使用者",
+                    "type": "integer",
+                    "example": 1
+                },
+                "pwd": {
+                    "description": "密碼",
+                    "type": "string",
+                    "example": "qwe123"
+                },
+                "pwd_confirmation": {
+                    "description": "再次確認密碼",
+                    "type": "string",
+                    "example": "qwe123"
+                }
+            }
+        },
+        "structs.editAdminBody": {
+            "type": "object",
+            "properties": {
+                "group_id": {
+                    "description": "帳號權限 0:一般,1:超級使用者",
+                    "type": "integer",
+                    "example": 0
+                },
+                "status": {
+                    "description": "帳號狀態 false:停用,true:啟用",
+                    "type": "boolean",
+                    "example": false
+                }
+            }
+        },
+        "structs.loginInfo": {
+            "type": "object",
+            "properties": {
+                "account": {
+                    "description": "帳號",
+                    "type": "string",
+                    "example": "admin"
+                },
+                "id": {
+                    "description": "帳號流水號ID",
+                    "type": "integer",
+                    "example": 1
+                },
+                "permission": {
+                    "description": "權限",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "PROMOTION_ADMIN"
+                    ]
+                }
+            }
+        },
+        "structs.menuList": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "功能ID",
+                    "type": "string",
+                    "example": "1"
+                },
+                "name": {
+                    "description": "功能名稱",
+                    "type": "string",
+                    "example": "跑馬燈"
+                },
+                "route": {
+                    "description": "功能代號",
+                    "type": "string",
+                    "example": "marquee"
+                }
+            }
+        },
+        "structs.updatePwdRepoBody": {
+            "type": "object",
+            "properties": {
+                "password": {
+                    "description": "密碼",
+                    "type": "string",
+                    "example": "qwe123"
+                },
+                "pwd_confirmation": {
+                    "description": "再次確認密碼",
+                    "type": "string",
+                    "example": "qwe123"
+                }
+            }
+        }
+    }
+}
