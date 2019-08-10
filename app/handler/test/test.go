@@ -1,8 +1,8 @@
 package test
 
 import (
-	"GoFormat/app/business"
-	"GoFormat/app/global/helper"
+	"Go_Video/app/business"
+	"Go_Video/app/global/helper"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

@@ -2,9 +2,9 @@ version: '3'
 
 services:
   golang:
-    image: harbor.rd3sit.com/golang/goformat:latest
-    # build:
-    #   context: .
+    # image: harbor.rd3sit.com/golang/goformat:latest
+    build:
+      context: .
     container_name: ${PROJECT_NAME}
     restart: always
     ports:
@@ -15,10 +15,10 @@ services:
     working_dir: /go/src/${PROJECT_NAME}
     volumes:
       - .:/go/src/${PROJECT_NAME}
-      - ${LOG}:/home/log
+      # - ${LOG}:/home/log
       - ${IMG}:/home/images
       - /etc/localtime:/etc/localtime:ro # 美東時間
-      - ./linux_conf/logrotate:/etc/logrotate.d/${PROJECT_NAME} # 掛載logrotate 規則
+      # - ./linux_conf/logrotate:/etc/logrotate.d/${PROJECT_NAME} # 掛載logrotate 規則
       - ./linux_conf/supervisor.ini:/etc/supervisor.d/${PROJECT_NAME}.ini # 掛載 supervisor 起服務規則
     networks:
       - web_service

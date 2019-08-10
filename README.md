@@ -1,4 +1,4 @@
-# GoFormat
+# Go_Video_
 
 ## 啟動服務
 
@@ -11,7 +11,7 @@
 - prodT2
 
 #### 範例：
-- sh RunGoFormatServices.sh
+- sh RunGo_VideoServices.sh
 
 #### 備註：
 - 需要選擇環境，本機環境會自行執行swag init

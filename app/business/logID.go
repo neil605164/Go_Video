@@ -1,9 +1,9 @@
 package business
 
 import (
-	"GoFormat/app/global"
-	"GoFormat/app/global/errorcode"
-	"GoFormat/app/global/helper"
+	"Go_Video/app/global"
+	"Go_Video/app/global/errorcode"
+	"Go_Video/app/global/helper"
 	"fmt"
 	"sync"
 )

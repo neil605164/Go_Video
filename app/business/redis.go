@@ -1,9 +1,9 @@
 package business
 
 import (
-	"GoFormat/app/global"
-	"GoFormat/app/global/errorcode"
-	"GoFormat/app/repository"
+	"Go_Video/app/global"
+	"Go_Video/app/global/errorcode"
+	"Go_Video/app/repository"
 	"fmt"
 	"sync"
 	"time"
@@ -27,7 +27,7 @@ func RedisIns() *RedisBus {
 // SetRedisKey 存值進入redis
 func (a *RedisBus) SetRedisKey() (err errorcode.Error) {
 	redis := repository.RedisIns()
-	key := fmt.Sprintf("GoFormat:TestRedis")
+	key := fmt.Sprintf("Go_Video:TestRedis")
 	err = redis.Set(key, time.Now(), global.RedisDBExpire)
 	if err != nil {
 		return
@@ -39,7 +39,7 @@ func (a *RedisBus) SetRedisKey() (err errorcode.Error) {
 // GetRedisValue 取 redis 值
 func (a *RedisBus) GetRedisValue() (value string, err errorcode.Error) {
 	redis := repository.RedisIns()
-	key := fmt.Sprintf("GoFormat:TestRedis")
+	key := fmt.Sprintf("Go_Video:TestRedis")
 	value, err = redis.Get(key)
 	if err != nil {
 		return

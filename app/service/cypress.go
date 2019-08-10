@@ -1,8 +1,8 @@
 package service
 
 import (
-	"GoFormat/app/global"
-	"GoFormat/app/global/errorcode"
+	"Go_Video/app/global"
+	"Go_Video/app/global/errorcode"
 	"sync"
 )
 

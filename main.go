@@ -1,12 +1,11 @@
 package main
 
 import (
-	"GoFormat/app/global"
-	"GoFormat/app/global/helper"
-	"GoFormat/app/model"
-	"GoFormat/app/repository"
-	_ "GoFormat/docs"
-	"GoFormat/router"
+	"Go_Video/app/global"
+	"Go_Video/app/global/helper"
+	"Go_Video/app/model"
+	_ "Go_Video/docs"
+	"Go_Video/router"
 	"fmt"
 
 	"github.com/gin-gonic/gin"
@@ -15,6 +14,17 @@ import (
 
 var c *gin.Context
 
+// @title 上傳影片
+// @version 1.0
+// @description 上傳影片練習用
+// @termsOfService https://google.com
+// @contact.name Neil_Hsieh
+// @contact.url https://google.com
+// @contact.email neil605164@gmail.com
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+// @host 127.0.0.1:9999
+// @BasePath /
 func main() {
 	defer func() {
 		if err := recover(); err != nil {
@@ -35,7 +45,7 @@ func main() {
 	model.DBPing()
 
 	// 檢查 Redis 機器服務
-	repository.RedisPing()
+	// repository.RedisPing()
 
 	// 背景
 	// go task.Schedule()

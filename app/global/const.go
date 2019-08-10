@@ -1,10 +1,10 @@
 package global
 
-// GoFormatMa db master
-const GoFormatMa = "goformat_master"
+// Go_VideoMa db master
+const Go_VideoMa = "Go_Video_master"
 
-// GoFormatSl db slave
-const GoFormatSl = "goformat_slave"
+// Go_VideoSl db slave
+const Go_VideoSl = "Go_Video_slave"
 
 /** 正則規則 **/
 const (

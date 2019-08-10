@@ -1,9 +1,9 @@
 package model
 
 import (
-	"GoFormat/app/global"
-	"GoFormat/app/global/errorcode"
-	"GoFormat/app/global/helper"
+	"Go_Video/app/global"
+	"Go_Video/app/global/errorcode"
+	"Go_Video/app/global/helper"
 	"fmt"
 	"log"
 	"time"
@@ -31,7 +31,7 @@ func MasterConnect() (*gorm.DB, errorcode.Error) {
 		return masterPool, nil
 	}
 
-	connString := composeString(global.GoFormatMa)
+	connString := composeString(global.Go_VideoMa)
 	masterPool, err := gorm.Open("mysql", connString)
 	if err != nil {
 		apiErr := helper.ErrorHandle(global.FatalLog, "DB_CONNECT_ERROR", err.Error())
@@ -60,7 +60,7 @@ func SlaveConnect() (*gorm.DB, errorcode.Error) {
 		return slavePool, nil
 	}
 
-	connString := composeString(global.GoFormatSl)
+	connString := composeString(global.Go_VideoSl)
 	slavePool, err := gorm.Open("mysql", connString)
 	if err != nil {
 		apiErr := helper.ErrorHandle(global.FatalLog, "DB_CONNECT_ERROR", err.Error())
@@ -112,12 +112,12 @@ func composeString(mode string) string {
 	db := dbCon{}
 
 	switch mode {
-	case global.GoFormatMa:
+	case global.Go_VideoMa:
 		db.Host = global.Config.DBMaster.Host
 		db.Username = global.Config.DBMaster.Username
 		db.Password = global.Config.DBMaster.Password
 		db.Database = global.Config.DBMaster.Database
-	case global.GoFormatSl:
+	case global.Go_VideoSl:
 		db.Host = global.Config.DbSlave.Host
 		db.Username = global.Config.DbSlave.Username
 		db.Password = global.Config.DbSlave.Password

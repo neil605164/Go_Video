@@ -1,8 +1,8 @@
 package model
 
 import (
-	"GoFormat/app/global"
-	"GoFormat/app/global/helper"
+	"Go_Video/app/global"
+	"Go_Video/app/global/helper"
 	"fmt"
 	"time"
 

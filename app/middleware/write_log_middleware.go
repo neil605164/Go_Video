@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"GoFormat/app/global/helper"
+	"Go_Video/app/global/helper"
 
 	"github.com/gin-gonic/gin"
 )

@@ -22,10 +22,10 @@
 /Redis/*
 
 ### Govendor ###
-./vendor/github.com
-./vendor/golang.org
-./vendor/gopkg.in
-./vendor/google.golang.org
+/vendor/github.com
+/vendor/golang.org
+/vendor/gopkg.in
+/vendor/google.golang.org
 
 ### Init Docker Service ###
 ordered_startup.log

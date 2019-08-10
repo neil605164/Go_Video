@@ -1,8 +1,8 @@
 package query
 
 import (
-	"GoFormat/app/global/structs"
-	"GoFormat/app/graphql/schema"
+	"Go_Video/app/global/structs"
+	"Go_Video/app/graphql/schema"
 	"github.com/graphql-go/graphql"
 )
 

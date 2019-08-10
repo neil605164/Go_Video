@@ -1,9 +1,9 @@
 package helper
 
 import (
-	"GoFormat/app/global"
-	"GoFormat/app/global/errorcode"
-	"GoFormat/app/global/structs"
+	"Go_Video/app/global"
+	"Go_Video/app/global/errorcode"
+	"Go_Video/app/global/structs"
 	"encoding/json"
 	"math/rand"
 	"time"

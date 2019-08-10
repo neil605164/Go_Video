@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"GoFormat/app/global/errorcode"
-	"GoFormat/app/model"
+	"Go_Video/app/global/errorcode"
+	"Go_Video/app/model"
 	"fmt"
 	"sync"
 )

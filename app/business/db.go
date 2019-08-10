@@ -1,8 +1,8 @@
 package business
 
 import (
-	"GoFormat/app/global/errorcode"
-	"GoFormat/app/repository"
+	"Go_Video/app/global/errorcode"
+	"Go_Video/app/repository"
 	"sync"
 )
 

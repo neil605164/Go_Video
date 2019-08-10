@@ -1,7 +1,7 @@
 package router
 
 import (
-	"GoFormat/app/handler/test"
+	"Go_Video/app/handler/test"
 
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
