@@ -23,7 +23,7 @@ var c *gin.Context
 // @contact.email neil605164@gmail.com
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
-// @host 127.0.0.1:9999
+// @host localhost:9999
 // @BasePath /
 func main() {
 	defer func() {

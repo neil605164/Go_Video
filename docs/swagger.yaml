@@ -11,7 +11,7 @@ definitions:
       result:
         type: object
     type: object
-host: 127.0.0.1:9999
+host: localhost:9999
 info:
   contact:
     email: neil605164@gmail.com
@@ -27,15 +27,17 @@ info:
 paths:
   /backend/upload_video:
     post:
+      consumes:
+      - multipart/form-data
       description: 上傳 mp4 影片
       parameters:
       - description: 影片檔
         in: formData
-        name: video
+        name: file
         required: true
         type: file
       produces:
-      - multipart/form-data
+      - application/json
       responses:
         "200":
           description: 成功
